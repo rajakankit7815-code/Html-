@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
 <style>
@@ -47,6 +47,93 @@ body{
 <body>
 
 <div class="infinity"></div>
+
+</body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Infinite Rangoli</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:#111;
+    overflow:hidden;
+}
+
+.rangoli{
+    position:relative;
+    width:300px;
+    height:300px;
+    animation:rotate 12s linear infinite;
+}
+
+.petal{
+    position:absolute;
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    background:linear-gradient(45deg,#ff0080,#ffcc00);
+    box-shadow:0 0 20px #ff66aa;
+    transform-origin:110px 110px;
+}
+
+.petal:nth-child(1){transform:rotate(0deg) translateY(-110px);}
+.petal:nth-child(2){transform:rotate(45deg) translateY(-110px);}
+.petal:nth-child(3){transform:rotate(90deg) translateY(-110px);}
+.petal:nth-child(4){transform:rotate(135deg) translateY(-110px);}
+.petal:nth-child(5){transform:rotate(180deg) translateY(-110px);}
+.petal:nth-child(6){transform:rotate(225deg) translateY(-110px);}
+.petal:nth-child(7){transform:rotate(270deg) translateY(-110px);}
+.petal:nth-child(8){transform:rotate(315deg) translateY(-110px);}
+
+.center{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:gold;
+    box-shadow:0 0 25px yellow;
+}
+
+@keyframes rotate{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
+}
+</style>
+
+</head>
+<body>
+
+<div class="rangoli">
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="center"></div>
+</div>
 
 </body>
 </html>
