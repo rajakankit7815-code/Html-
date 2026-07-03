@@ -140,7 +140,7 @@ body{
 
 
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -202,6 +202,55 @@ function draw(){
 
 draw();
 </script>
+
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(
+        90deg,
+        red,
+        orange,
+        yellow,
+        green,
+        cyan,
+        blue,
+        violet
+    );
+    background-size:400% 400%;
+    animation:rainbow 8s linear infinite;
+}
+
+h1{
+    color:white;
+    font-size:60px;
+    text-shadow:0 0 20px black;
+}
+
+@keyframes rainbow{
+    0%{
+        background-position:0% 50%;
+    }
+    100%{
+        background-position:100% 50%;
+    }
+}
+</style>
+</head>
+<body>
+
+<h1>🌈 Rainbow 🌈</h1>
 
 </body>
 </html>
