@@ -208,7 +208,7 @@ draw();
 
 
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
 <style>
@@ -251,6 +251,85 @@ h1{
 <body>
 
 <h1>🌈 Rainbow 🌈</h1>
+
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Infinite Lighting</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+}
+
+body{
+    overflow:hidden;
+    background:black;
+}
+
+canvas{
+    display:block;
+}
+</style>
+</head>
+<body>
+
+<canvas id="canvas"></canvas>
+
+<script>
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+function resize(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+resize();
+window.onresize = resize;
+
+let t = 0;
+
+function animate(){
+
+    ctx.fillStyle = "rgba(0,0,0,0.08)";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    for(let i=0;i<150;i++){
+
+        let angle = i*0.2 + t;
+
+        let r = 250 + 120*Math.sin(i+t);
+
+        let x = canvas.width/2 + Math.cos(angle)*r;
+        let y = canvas.height/2 + Math.sin(angle)*r;
+
+        ctx.beginPath();
+        ctx.arc(x,y,4,0,Math.PI*2);
+
+        let hue = (i*5+t*100)%360;
+
+        ctx.fillStyle=`hsl(${hue},100%,60%)`;
+        ctx.shadowBlur=25;
+        ctx.shadowColor=`hsl(${hue},100%,60%)`;
+
+        ctx.fill();
+    }
+
+    t += 0.01;
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+
+</script>
 
 </body>
 </html>
