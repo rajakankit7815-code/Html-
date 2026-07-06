@@ -1,5 +1,5 @@
 
-*{
+/* *{
     margin:0;
     padding:0;
     box-sizing:border-box;
@@ -60,6 +60,72 @@ body{
 
 @keyframes rainbow{
     100%{
+        filter:hue-rotate(360deg);
+    }
+} */
+
+
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:#000;
+    overflow:hidden;
+}
+
+.heart{
+    position:relative;
+    width:180px;
+    height:180px;
+    background:#ff0066;
+    transform:rotate(-45deg);
+    animation:pulse 1.5s infinite;
+    box-shadow:
+        0 0 20px #ff0066,
+        0 0 40px #ff0066,
+        0 0 80px #ff0066,
+        0 0 120px #ff0066;
+}
+
+.heart::before,
+.heart::after{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    background:#ff0066;
+    border-radius:50%;
+}
+
+.heart::before{
+    top:-90px;
+    left:0;
+}
+
+.heart::after{
+    left:90px;
+    top:0;
+}
+
+@keyframes pulse{
+    0%{
+        transform:rotate(-45deg) scale(1);
+        filter:hue-rotate(0deg);
+    }
+    50%{
+        transform:rotate(-45deg) scale(1.15);
+    }
+    100%{
+        transform:rotate(-45deg) scale(1);
         filter:hue-rotate(360deg);
     }
 }
