@@ -371,7 +371,7 @@ animate();
 </html> -->
 
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
 
@@ -385,6 +385,86 @@ animate();
         <div class="earth"></div>
     </div>
 </div>
+
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emoji Follower</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    overflow:hidden;
+    background:linear-gradient(135deg,#0f172a,#1e293b,#334155);
+    height:100vh;
+    cursor:none;
+}
+
+h1{
+    color:white;
+    text-align:center;
+    margin-top:30px;
+    font-family:Arial;
+}
+
+#emoji{
+    position:absolute;
+    font-size:60px;
+    pointer-events:none;
+    transition:transform .15s;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Move Your Mouse 😊</h1>
+
+<div id="emoji">😎</div>
+
+<script>
+
+const emoji=document.getElementById("emoji");
+
+let mouseX=window.innerWidth/2;
+let mouseY=window.innerHeight/2;
+
+let x=mouseX;
+let y=mouseY;
+
+document.addEventListener("mousemove",(e)=>{
+    mouseX=e.clientX;
+    mouseY=e.clientY;
+});
+
+function animate(){
+
+    x+=(mouseX-x)*0.12;
+    y+=(mouseY-y)*0.12;
+
+    emoji.style.left=x+"px";
+    emoji.style.top=y+"px";
+
+    emoji.style.transform=`translate(-50%,-50%) rotate(${x/5}deg)`;
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+
+</script>
 
 </body>
 </html>
