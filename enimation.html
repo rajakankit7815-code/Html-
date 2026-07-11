@@ -1,0 +1,133 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            background-color: orange;
+            width: 100px;
+            border: black solid 2px;
+            border-radius: 50px;
+            height: 100px;
+            margin: auto;
+            animation-name: bounce;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+            animation-direction: alternate;
+        }
+        @keyframes bounce {
+            0% {
+                transform: translateY(0px);
+            }
+            100% {
+                transform: translateY(85vh) rotate(360deg);
+
+            }
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>100 Emoji Rain 🌧️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    overflow:hidden;
+    background:linear-gradient(to bottom,#020024,#090979,#000);
+    height:100vh;
+    font-family:Arial,sans-serif;
+}
+
+h1{
+    position:absolute;
+    width:100%;
+    text-align:center;
+    color:white;
+    top:20px;
+    z-index:100;
+    text-shadow:0 0 20px cyan;
+}
+
+.emoji{
+    position:absolute;
+    top:-100px;
+    user-select:none;
+    pointer-events:none;
+    animation-name:fall;
+    animation-timing-function:linear;
+    animation-iteration-count:infinite;
+}
+
+@keyframes fall{
+
+0%{
+    transform:translateY(-100px) rotate(0deg);
+    opacity:1;
+}
+
+100%{
+    transform:translateY(120vh) rotate(720deg);
+    opacity:.9;
+}
+
+}
+</style>
+</head>
+<body>
+
+<h1>🌧️ 100 Emoji Rain 🌈</h1>
+
+<script>
+
+const emojis=[
+"😂","😍","😎","🤩","🥳","😜","😇","🤖","👻","💀",
+"❤️","💙","💚","💛","💜","🧡","🔥","⭐","🌈","⚡",
+"🍕","🍔","🍟","🍩","🍎","🍉","🍓","🍌","🍇","🥭",
+"🚀","🚗","✈️","🚁","🚲","🎮","⚽","🏀","🎸","🎵",
+"🐶","🐱","🐼","🦁","🐸","🐵","🐧","🦄","🐬","🐢"
+];
+
+for(let i=0;i<100;i++){
+
+    let e=document.createElement("div");
+
+    e.className="emoji";
+
+    e.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+
+    e.style.left=Math.random()*100+"vw";
+
+    e.style.fontSize=(20+Math.random()*45)+"px";
+
+    e.style.animationDuration=(4+Math.random()*8)+"s";
+
+    e.style.animationDelay=(-Math.random()*10)+"s";
+
+    document.body.appendChild(e);
+
+}
+
+</script>
+
+</body>
+</html>
