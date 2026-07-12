@@ -37,7 +37,7 @@
 
 
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -125,6 +125,153 @@ for(let i=0;i<100;i++){
 
     document.body.appendChild(e);
 
+}
+
+</script>
+
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Emoji Rain Day/Night</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+overflow:hidden;
+height:100vh;
+transition:1s;
+background:linear-gradient(#001848,#000);
+}
+
+body.day{
+background:linear-gradient(#87CEEB,#E0F7FF);
+}
+
+h1{
+position:absolute;
+width:100%;
+text-align:center;
+top:20px;
+color:white;
+font-family:Arial;
+z-index:100;
+transition:.5s;
+}
+
+body.day h1{
+color:#222;
+}
+
+button{
+position:absolute;
+top:20px;
+right:20px;
+padding:12px 20px;
+font-size:18px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+z-index:100;
+}
+
+.sun,.moon{
+
+position:absolute;
+right:50px;
+top:90px;
+font-size:80px;
+transition:1s;
+}
+
+.sun{
+display:none;
+}
+
+body.day .sun{
+display:block;
+}
+
+body.day .moon{
+display:none;
+}
+
+.emoji{
+
+position:absolute;
+top:-100px;
+animation:fall linear infinite;
+user-select:none;
+pointer-events:none;
+
+}
+
+@keyframes fall{
+
+0%{
+transform:translateY(-100px) rotate(0deg);
+}
+
+100%{
+transform:translateY(120vh) rotate(720deg);
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>🌧 Emoji Rain 🌧</h1>
+
+<button onclick="toggleMode()">🌙 / ☀️</button>
+
+<div class="sun">☀️</div>
+<div class="moon">🌙</div>
+
+<script>
+
+const emojis=[
+"😂","😍","😎","🤩","🥳","😜","❤️","🔥","⭐","🌈",
+"🍕","🍔","🚀","⚽","🎮","🐱","🐶","🦄","🍩","💎"
+];
+
+for(let i=0;i<100;i++){
+
+let e=document.createElement("div");
+
+e.className="emoji";
+
+e.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+
+e.style.left=Math.random()*100+"vw";
+
+e.style.fontSize=(20+Math.random()*40)+"px";
+
+e.style.animationDuration=(4+Math.random()*8)+"s";
+
+e.style.animationDelay=(-Math.random()*8)+"s";
+
+document.body.appendChild(e);
+
+}
+
+function toggleMode(){
+document.body.classList.toggle("day");
 }
 
 </script>
