@@ -1,0 +1,199 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> -->
+        /* #parent{
+            border: 2px solid black;
+            height:400px;
+            display: flex;
+        }
+        #parent div{
+            height :30px;
+           background-color: black;
+           align-items: ;
+           
+        }
+        #parent div:nth-of-type(1){
+            background-color: red;
+
+        }
+        #parent div:nth-of-type(2){
+            background-color: yellow;
+
+        }
+        #parent div:nth-of-type(3){
+            background-color: blue;
+
+        }
+        #parent div:nth-of-type(4){
+            background-color: pink;
+
+        } */
+         #parent{
+            height: 50px;
+            background-color: black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+         }
+         a{
+            color: aqua;
+            font-size: 20px;
+
+         }
+         #man{
+            display: flex;
+            width: 200px;
+            justify-content: space-between;
+         }
+
+
+
+    <!-- </style>
+</head>
+<body>
+    <div id="parent">
+        <div>
+            <a >Home</a>
+        </div>
+        <div id="man">
+            <a>about</a>
+            <a>contact us</a>
+            <a> product</a>
+        </div>
+        <div>
+            <button>login</button>
+        </div>
+    </div>
+    
+    
+</body>
+</html>
+ -->
+
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fireworks</title>
+
+<style>
+body{
+    margin:0;
+    overflow:hidden;
+    background:black;
+    cursor:crosshair;
+}
+canvas{
+    display:block;
+}
+</style>
+
+</head>
+<body>
+
+<canvas id="canvas"></canvas>
+
+<script>
+
+const canvas=document.getElementById("canvas");
+const ctx=canvas.getContext("2d");
+
+canvas.width=innerWidth;
+canvas.height=innerHeight;
+
+let particles=[];
+
+window.onresize=()=>{
+canvas.width=innerWidth;
+canvas.height=innerHeight;
+}
+
+class Particle{
+
+constructor(x,y,color){
+
+this.x=x;
+this.y=y;
+
+this.dx=(Math.random()-0.5)*8;
+this.dy=(Math.random()-0.5)*8;
+
+this.life=100;
+
+this.color=color;
+
+}
+
+update(){
+
+this.x+=this.dx;
+this.y+=this.dy;
+
+this.dy+=0.05;
+
+this.life--;
+
+}
+
+draw(){
+
+ctx.beginPath();
+
+ctx.arc(this.x,this.y,3,0,Math.PI*2);
+
+ctx.fillStyle=this.color;
+
+ctx.fill();
+
+}
+
+}
+
+canvas.addEventListener("click",(e)=>{
+
+const color=`hsl(${Math.random()*360},100%,50%)`;
+
+for(let i=0;i<120;i++){
+
+particles.push(new Particle(e.clientX,e.clientY,color));
+
+}
+
+});
+
+function animate(){
+
+ctx.fillStyle="rgba(0,0,0,0.2)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+particles.forEach((p,index)=>{
+
+p.update();
+
+p.draw();
+
+if(p.life<=0){
+
+particles.splice(index,1);
+
+}
+
+});
+
+requestAnimationFrame(animate);
+
+}
+
+animate();
+
+</script>
+
+</body>
+</html>
