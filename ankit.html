@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Snake Game</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #111;
+    margin: 0;
+  }
+  canvas {
+    background: #000;
+    border: 2px solid #0f0;
+  }
+</style>
+</head>
+<body>
+
+<canvas id="game" width="400" height="400"></canvas>
+
+<script src>
+const canvas = document.getElementById("game");
+const ctx = canvas.getContext("2d");
+
+const box = 20;
+let snake = [{ x: 200, y: 200 }];
+let food = {
+  x: Math.floor(Math.random() * 20) * box,
+  y: Math.floor(Math.random() * 20) * box
+};
+
+let direction = "RIGHT";
+let score = 0;
+
+// Controls
+document.addEventListener("keydown", changeDirection);
+
+function changeDirection(event) {
+  if (event.key === "ArrowLeft" && direction !== "RIGHT") direction = "LEFT";
+  else if (event.key === "ArrowUp" && direction !== "DOWN") direction = "UP";
+  else if (event.key === "ArrowRight" && direction !== "LEFT") direction = "RIGHT";
+  else if (event.key === "ArrowDown" && direction !== "UP") direction = "DOWN";
+}
+
+// Collision check
+function collision(head, array) {
+  for (let i = 0; i < array.length; i++) {
+    if (head.x === array[i].x && head.y === array[i].y) return true;
+  }
+  return false;
+}
+
+// Game loop
+function draw() {
+  ctx.fillStyle = "#000";
+  ctx.fillRect(0, 0, 400, 400);
+
+  // Draw snake
+  for (let i = 0; i < snake.length; i++) {
+    ctx.fillStyle = i === 0 ? "#0f0" : "#0a0";
+    ctx.fillRect(snake[i].x, snake[i].y, box, box);
+  }
+
+  // Draw food
+  ctx.fillStyle = "red";
+  ctx.fillRect(food.x, food.y, box, box);
+
+  // Move snake
+  let headX = snake[0].x;
+  let headY = snake[0].y;
+
+  if (direction === "LEFT") headX -= box;
+  if (direction === "UP") headY -= box;
+  if (direction === "RIGHT") headX += box;
+  if (direction === "DOWN") headY += box;
+
+  // Eat food
+  if (headX === food.x && headY === food.y) {
+    score++;
+    food = {
+      x: Math.floor(Math.random() * 20) * box,
+      y: Math.floor(Math.random() * 20) * box
+    };
+  } else {
+    snake.pop();
+  }
+
+  const newHead = { x: headX, y: headY };
+
+  // Game over conditions
+  if (
+    headX < 0 || headY < 0 ||
+    headX >= canvas.width || headY >= canvas.height ||
+    collision(newHead, snake)
+  ) {
+    clearInterval(game);
+    alert("Game Over! Score: " + score);
+  }
+
+  snake.unshift(newHead);
+
+  // Score display
+  ctx.fillStyle = "#fff";
+  ctx.font = "20px Arial";
+  ctx.fillText("Score: " + score, 10, 20);
+}
+
+const game = setInterval(draw, 100);
+</script>
+
+</body>
+</html> -->
+
+
+<!--
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Ludo Game</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial;
+      background: #f0f0f0;
+    }
+
+    #board {
+      display: grid;
+      grid-template-columns: repeat(5, 80px);
+      gap: 5px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .cell {
+      width: 80px;
+      height: 80px;
+      background: white;
+      border: 1px solid black;
+      line-height: 80px;
+      font-size: 20px;
+    }
+
+    .player1 {
+      background: red;
+      color: white;
+    }
+
+    .player2 {
+      background: green;
+      color: white;
+    }
+
+    #dice {
+      font-size: 30px;
+      margin: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>🎲 Ludo Game (Simple)</h1>
+
+<div id="dice">Roll Dice</div>
+<button onclick="rollDice()">Roll</button>
+
+<div id="board"></div>
+
+<script>
+  const board = document.getElementById("board");
+  const diceDisplay = document.getElementById("dice");
+
+  let cells = [];
+  let player1Pos = 0;
+  let player2Pos = 0;
+  let turn = 1;
+
+  // Create board
+  for (let i = 0; i < 25; i++) {
+    let div = document.createElement("div");
+    div.classList.add("cell");
+    board.appendChild(div);
+    cells.push(div);
+  }
+
+  function updateBoard() {
+    cells.forEach(cell => {
+      cell.classList.remove("player1", "player2");
+      cell.innerText = "";
+    });
+
+    cells[player1Pos].classList.add("player1");
+    cells[player1Pos].innerText = "P1";
+
+    cells[player2Pos].classList.add("player2");
+    cells[player2Pos].innerText = "P2";
+  }
+
+  function rollDice() {
+    let dice = Math.floor(Math.random() * 6) + 1;
+    diceDisplay.innerText = "Dice: " + dice;
+
+    if (turn === 1) {
+      player1Pos += dice;
+      if (player1Pos >= 24) {
+        alert("Player 1 Wins!");
+        location.reload();
+      }
+      turn = 2;
+    } else {
+      player2Pos += dice;
+      if (player2Pos >= 24) {
+        alert("Player 2 Wins!");
+        location.reload();
+      }
+      turn = 1;
+    }
+
+    updateBoard();
+  }
+
+  updateBoard();
+</script>
+
+</body>
+</html> -->
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Car Racing Game</title>
+    <style>
+        body {
+            margin: 0;
+            background: #333;
+            overflow: hidden;
+        }
+        #gameArea {
+            width: 400px;
+            height: 100vh;
+            margin: auto;
+            background: #555;
+            position: relative;
+            overflow: hidden;
+            border-left: 5px solid white;
+            border-right: 5px solid white;
+        }
+        .car {
+            width: 50px;
+            height: 100px;
+            position: absolute;
+            bottom: 20px;
+            background: red;
+        }
+        .enemy {
+            width: 50px;
+            height: 100px;
+            position: absolute;
+            background: yellow;
+        }
+        .line {
+            width: 10px;
+            height: 100px;
+            background: white;
+            position: absolute;
+            left: 195px;
+        }
+        #score {
+            position: absolute;
+            color: white;
+            top: 10px;
+            left: 10px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="gameArea">
+    <div id="score">Score: 0</div>
+    <div id="player" class="car"></div>
+</div>
+
+<script>
+const gameArea = document.getElementById("gameArea");
+const player = document.getElementById("player");
+const scoreDisplay = document.getElementById("score");
+
+let keys = {};
+let speed = 5;
+let score = 0;
+
+player.style.left = "175px";
+
+// Controls
+document.addEventListener("keydown", e => keys[e.key] = true);
+document.addEventListener("keyup", e => keys[e.key] = false);
+
+// Create road lines
+for(let i=0;i<5;i++){
+    let line = document.createElement("div");
+    line.classList.add("line");
+    line.style.top = (i*150) + "px";
+    gameArea.appendChild(line);
+}
+
+// Create enemies
+function createEnemy(){
+    let enemy = document.createElement("div");
+    enemy.classList.add("enemy");
+    enemy.style.top = "-100px";
+    enemy.style.left = Math.floor(Math.random()*350) + "px";
+    gameArea.appendChild(enemy);
+}
+
+setInterval(createEnemy, 1500);
+
+// Collision detection
+function isCollide(a, b){
+    let aRect = a.getBoundingClientRect();
+    let bRect = b.getBoundingClientRect();
+
+    return !(
+        aRect.bottom < bRect.top ||
+        aRect.top > bRect.bottom ||
+        aRect.right < bRect.left ||
+        aRect.left > bRect.right
+    );
+}
+
+// Game loop
+function gameLoop(){
+    let playerLeft = player.offsetLeft;
+
+    // Move player
+    if(keys["ArrowLeft"] && playerLeft > 0){
+        player.style.left = playerLeft - speed + "px";
+    }
+    if(keys["ArrowRight"] && playerLeft < 350){
+        player.style.left = playerLeft + speed + "px";
+    }
+
+    // Move lines
+    document.querySelectorAll(".line").forEach(line => {
+        let top = line.offsetTop;
+        if(top > window.innerHeight){
+            top = -100;
+        }
+        line.style.top = top + speed + "px";
+    });
+
+    // Move enemies
+    document.querySelectorAll(".enemy").forEach(enemy => {
+        let top = enemy.offsetTop;
+
+        if(isCollide(player, enemy)){
+            alert("Game Over! Score: " + score);
+            location.reload();
+        }
+
+        if(top > window.innerHeight){
+            enemy.remove();
+            score += 10;
+            scoreDisplay.innerText = "Score: " + score;
+        } else {
+            enemy.style.top = top + speed + "px";
+        }
+    });
+
+    requestAnimationFrame(gameLoop);
+}
+
+gameLoop();
+</script>
+
+</body>
+</html> -->
+
+
+
+// monkey swing
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monkey Swing Animation</title>
+
+<style>
+
+body{
+    margin:0;
+    overflow:hidden;
+    height:100vh;
+    background:linear-gradient(to bottom,#87CEEB,#c8f7c5);
+}
+
+.sun{
+    position:absolute;
+    top:30px;
+    right:40px;
+    font-size:80px;
+}
+
+.tree{
+    position:absolute;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:220px;
+}
+
+.rope{
+    position:absolute;
+    left:50%;
+    top:50px;
+    width:4px;
+    height:220px;
+    background:#8B4513;
+    transform-origin:top center;
+    animation:swing 3s ease-in-out infinite alternate;
+}
+
+.monkey{
+    position:absolute;
+    bottom:-40px;
+    left:-28px;
+    font-size:60px;
+}
+
+@keyframes swing{
+    0%{
+        transform:rotate(-30deg);
+    }
+
+    100%{
+        transform:rotate(30deg);
+    }
+}
+
+</style>
+</head>
+<body>
+
+<div class="sun">☀️</div>
+
+<div class="rope">
+    <div class="monkey">🐵</div>
+</div>
+
+<div class="tree">🌴</div>
+
+</body>
+</html>
