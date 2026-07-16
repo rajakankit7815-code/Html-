@@ -395,7 +395,7 @@ gameLoop();
 // monkey swing
 
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -465,6 +465,131 @@ body{
 </div>
 
 <div class="tree">🌴</div>
+
+</body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Monkey Face</title>
+
+<style>
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:#87CEEB;
+}
+
+.monkey{
+    position:relative;
+    width:220px;
+    height:220px;
+    background:#8B4513;
+    border-radius:50%;
+}
+
+.ear{
+    position:absolute;
+    width:70px;
+    height:70px;
+    background:#8B4513;
+    border-radius:50%;
+    top:-20px;
+}
+
+.left{
+    left:-20px;
+}
+
+.right{
+    right:-20px;
+}
+
+.inner{
+    width:40px;
+    height:40px;
+    background:#D2B48C;
+    border-radius:50%;
+    margin:15px;
+}
+
+.eye{
+    position:absolute;
+    width:20px;
+    height:20px;
+    background:black;
+    border-radius:50%;
+    top:70px;
+}
+
+.eye1{
+    left:60px;
+}
+
+.eye2{
+    right:60px;
+}
+
+.face{
+    position:absolute;
+    width:120px;
+    height:90px;
+    background:#D2B48C;
+    border-radius:50%;
+    left:50px;
+    top:105px;
+}
+
+.nose{
+    position:absolute;
+    width:15px;
+    height:15px;
+    background:black;
+    border-radius:50%;
+    left:52px;
+    top:20px;
+}
+
+.smile{
+    position:absolute;
+    width:50px;
+    height:25px;
+    border-bottom:4px solid black;
+    border-radius:0 0 50px 50px;
+    left:35px;
+    top:35px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="monkey">
+
+<div class="ear left">
+<div class="inner"></div>
+</div>
+
+<div class="ear right">
+<div class="inner"></div>
+</div>
+
+<div class="eye eye1"></div>
+<div class="eye eye2"></div>
+
+<div class="face">
+<div class="nose"></div>
+<div class="smile"></div>
+</div>
+
+</div>
 
 </body>
 </html>
