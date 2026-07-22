@@ -59,3 +59,39 @@ document.getElementById("result").innerHTML=
 `;
 
 }
+function calculateGST(){
+
+let amount=parseFloat(document.getElementById("amount").value);
+let gst=parseFloat(document.getElementById("gst").value);
+
+if(isNaN(amount)||isNaN(gst)){
+    alert("Enter Amount and GST%");
+    return;
+}
+
+let gstAmount=amount*gst/100;
+let cgst=gstAmount/2;
+let sgst=gstAmount/2;
+let igst=gstAmount;
+
+let total=amount+gstAmount;
+
+document.getElementById("result").innerHTML=`
+
+<h3>GST Details</h3>
+
+Original Amount : ₹${amount.toFixed(2)}<br><br>
+
+CGST (${gst/2}%) : ₹${cgst.toFixed(2)}<br>
+
+SGST (${gst/2}%) : ₹${sgst.toFixed(2)}<br>
+
+IGST (${gst}%) : ₹${igst.toFixed(2)}<br><br>
+
+<b>Total GST :</b> ₹${gstAmount.toFixed(2)}<br>
+
+<b style="color:green;">Final Amount :</b> ₹${total.toFixed(2)}
+
+`;
+
+}
