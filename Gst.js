@@ -137,3 +137,41 @@ clearDisplay();
 }
 
 });
+
+function calculateAge(){
+
+let dob=document.getElementById("dob").value;
+
+if(!dob){
+    alert("Please select your Date of Birth");
+    return;
+}
+
+let birth=new Date(dob);
+let today=new Date();
+
+let years=today.getFullYear()-birth.getFullYear();
+let months=today.getMonth()-birth.getMonth();
+let days=today.getDate()-birth.getDate();
+
+if(days<0){
+    months--;
+    const lastMonth=new Date(today.getFullYear(),today.getMonth(),0);
+    days+=lastMonth.getDate();
+}
+
+if(months<0){
+    years--;
+    months+=12;
+}
+
+document.getElementById("ageResult").innerHTML=
+`
+🎉 <b>Your Age</b><br><br>
+
+👤 ${years} Years<br>
+📅 ${months} Months<br>
+🗓️ ${days} Days
+`;
+
+}
