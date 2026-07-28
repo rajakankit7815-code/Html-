@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: skyblue;
+    position: relative;
+  overflow: hidden;
+}
+.text {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+  
+    color: red;
+    text-align: top;
+    animation: alternate-reverse;
+}
+@keyframes float {
+    0% { transform: translateY(100vh); }
+    100% { transform: translateY(-100px); }
+}
+.ground{
+    position: absolute;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    background-color: green;
+}
+.balloon {
+  width: 60px;
+  height: 80px;
+  background: red;
+  border-radius: 50% 50% 50% 50%;
+  position: absolute;
+  bottom: -100px;
+  animation: float 8s linear infinite;
+}
+
+.balloon::after {
+  content: "";
+  width: 2px;
+  height: 40px;
+  background: #555;
+  position: absolute;
+  left: 50%;
+  top: 80px;
+}
+
+/* Different balloons */
+.b1 { left: 10%; animation-delay: 0s; background: red; }
+.b2 { left: 30%; animation-delay: 2s; background: yellow; }
+.b3 { left: 50%; animation-delay: 4s; background: pink; }
+.b4 { left: 70%; animation-delay: 1s; background: violet; }
+.b5 { left: 90%; animation-delay: 3s; background: orange; }
+.b1{ right: 10%; animation-delay: 0s; background: brown;}
+.b2{ right: 30%; animation-delay: 2s; background: greenyellow;}
+.b3{ right: 50%; animation-delay: 4s; background: lightblue;}
+.b4{ right: 70%; animation-delay: 1s; background: lightgoldenrodyellow;}
+.b5{ right: 90%; animation-delay: 3s; background: #ff94;}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+<body>
+  <div class="text">BALLOON DAY CELEBRATION</div>
+  <div class="ground"></div>
+
+<div class="balloon b1"></div>
+<div class="balloon b2"></div>
+<div class="balloon b3"></div>
+<div class="balloon b4"></div>
+<div class="balloon b5"></div>
+<div class="balloon b1"></div>
+<div class="balloon b2"></div>
+<div class="balloon b3"></div>
+<div class="balloon b4"></div>
+<div class="balloon b5"></div>
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
